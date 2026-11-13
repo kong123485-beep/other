@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>韓國一站通 Korea Hub</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;background:#f6f7f9;color:#111}
+header{background:#111;color:#fff;padding:22px 16px 18px}header h1{margin:0;font-size:28px}header p{margin:6px 0 0;opacity:.85}
+nav{position:sticky;top:0;background:#fff;display:flex;gap:8px;padding:10px 12px;overflow-x:auto;border-bottom:1px solid #eee;z-index:5}
+nav a{background:#f0f0f0;color:#111;text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap;font-weight:700}
+.wrap{max-width:900px;margin:0 auto;padding:14px 12px 40px}
+.card{background:#fff;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+h2{margin:0 0 8px} .muted{color:#666;font-size:14px;line-height:1.6}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font-size:16px;margin:6px 0}
+.btn{display:inline-block;background:#03C75A;color:#fff;text-decoration:none;padding:11px 14px;border-radius:12px;font-weight:800;margin:4px 4px 4px 0;border:0;cursor:pointer}
+.btn.yellow{background:#FEE500;color:#111}.btn.dark{background:#111}.btn.blue{background:#2563eb}
+.chip{display:inline-block;background:#fff3cd;border:1px solid #ffe08a;padding:7px 10px;border-radius:999px;margin:3px;font-size:14px}
+.phrase{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed #eee}
+.phrase b{font-size:15px}.phrase span{color:#666;font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.box{border:1px solid #eee;border-radius:12px;padding:12px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><h1>🇰🇷 韓國一站通 Korea Hub</h1><p>一個網頁做晒：Naver Map / Papago / Kakao T / KakaoTalk / CatchTable / Tableling / Kakao Metro</p></header>
+<nav><a href="#map">🗺️ 地圖</a><a href="#trans">💬 翻譯</a><a href="#taxi">🚕 交通</a><a href="#metro">🚇 地鐵Apps</a><a href="#food">🍽️ 訂枱</a><a href="#chat">💛 傾偈</a><a href="#plan">📅 行程</a></nav>
+<div class="wrap">
+<div class="card" id="map"><h2>🗺️ 地圖 - Naver Map</h2><p class="muted">韓國用 Google Map 好多時唔準，Naver Map 先係最準。打地點即開 Naver Map。</p>
+<input id="mapQ" placeholder="例如：明洞、弘大、聖水、廣藏市場"><br>
+<button class="btn" onclick="openMap()">開 Naver Map 搜尋 →</button>
+<a class="btn dark" href="https://map.naver.com/" target="_blank">直接開 Naver Map</a><br><br>
+<button class="chip" onclick="goPlace('明洞')">明洞 Myeongdong</button><button class="chip" onclick="goPlace('弘大')">弘大 Hongdae</button><button class="chip" onclick="goPlace('江南')">江南 Gangnam</button><button class="chip" onclick="goPlace('釜山 海雲台')">釜山 海雲台</button><button class="chip" onclick="goPlace('濟州')">濟州 Jeju</button>
+<p class="muted">提示：Naver Map 記得下載 App + 登入先可以儲存地點，呢個網頁幫你快速跳轉。</p></div>
+
+<div class="card" id="trans"><h2>💬 翻譯 - Papago 常用句</h2><p class="muted">按複製即用，唔使逐句打。</p>
+<div id="phrases"></div>
+<textarea id="myText" rows="2" placeholder="打中文，例如：唔該，我想訂位"></textarea>
+<button class="btn" onclick="openPapago()">開 Papago 翻譯 →</button>
+<a class="btn dark" href="https://papago.naver.com/" target="_blank">papago.naver.com</a></div>
+
+<div class="card" id="taxi"><h2>🚕 交通 - Kakao T + Kakao Metro</h2>
+<label>由</label><select id="from"><option>仁川機場 Incheon</option><option>明洞 Myeongdong</option><option>弘大 Hongdae</option><option>江南 Gangnam</option><option>首爾站 Seoul Station</option></select>
+<label>去</label><select id="to"><option>明洞 Myeongdong</option><option>弘大 Hongdae</option><option>江南 Gangnam</option><option>仁川機場 Incheon</option><option>釜山站 Busan</option></select>
+<label>交通</label><select id="mode"><option value="taxi">的士 Kakao T</option><option value="metro">地鐵 Metro</option><option value="bus">巴士 Bus</option></select>
+<button class="btn yellow" onclick="calc()">估車費 / 時間</button><div id="fare" style="margin-top:10px;font-weight:700"></div>
+<br><a class="btn yellow" href="https://www.kakaomobility.com/" target="_blank">開 Kakao T</a>
+<a class="btn blue" href="https://www.seoulmetro.co.kr/" target="_blank">首爾地鐵官網</a>
+<p class="muted">地鐵線顏色：1號線 藍色 · 2號線 綠色 · 3號線 橙色 · 4號線 天藍 · 5號線 紫色 · 6號線 啡色 · 7號線 軍綠 · 8號線 粉紅 · 9號線 金色</p></div>
+
+
+<div class="card" id="metro"><h2>🚇 地鐵 Apps - Kakao Metro + Seoul Metro + Naver 地鐵</h2>
+<p class="muted">韓國地鐵最實用係呢 3 個，唔同情況用唔同 App：<br>
+<b>Kakao Metro</b> 睇班次 + 邊個車卡最近出口最準 · <b>Naver Map 地鐵</b> 計轉車路線最快 · <b>Seoul Metro 官方</b> 睇停運 / 延誤公告</p>
+<div class="grid">
+<div class="box"><b>💛 Kakao Metro 카카오지하철</b><p class="muted">實時到站、邊卡落車最近出口、末班車提醒</p><a class="btn yellow" href="https://apps.apple.com/kr/app/kakaometro/id1099230646" target="_blank">iPhone 下載</a><a class="btn dark" href="https://play.google.com/store/apps/details?id=net.kakao.android.metro" target="_blank">Android 下載</a><br><br><a class="btn" href="https://metro.kakao.com/" target="_blank">開網頁版 →</a></div>
+<div class="box"><b>💚 Naver Map 地鐵 / Naver Subway</b><p class="muted">輸入起點終點，自動計最快 / 最少轉車 / 最少行路</p><a class="btn" href="https://map.naver.com/p/subway" target="_blank">開 Naver 地鐵圖 →</a><a class="btn dark" href="https://map.naver.com/" target="_blank">Naver Map</a></div>
+<div class="box"><b>💙 Seoul Metro 首爾地鐵官方</b><p class="muted">官方延誤、停運、車站設施、失物招領</p><a class="btn blue" href="https://www.seoulmetro.co.kr/" target="_blank">seoulmetro.co.kr →</a><a class="btn dark" href="https://www.seoulmetro.co.kr/kr/page.do?menuIdx=542" target="_blank">實時運行情報</a></div>
+<div class="box"><b>🧡 Subway Korea / 韓國地鐵全圖</b><p class="muted">釜山、大邱、光州、大田都用得，一個 App 睇晒全國地鐵</p><a class="btn" href="https://apps.apple.com/kr/app/subway-korea/id325924444" target="_blank">iPhone</a><a class="btn dark" href="https://play.google.com/store/search?q=subway+korea&c=apps" target="_blank">Android 搜尋</a></div>
+</div>
+<h3 style="margin:16px 0 6px">首爾地鐵線 + 轉車大站</h3>
+<p class="muted">
+<span class="chip" style="background:#0052A4;color:#fff">1號線 藍</span> <span class="chip" style="background:#009D3E;color:#fff">2號線 綠</span> <span class="chip" style="background:#EF7C1C;color:#fff">3號線 橙</span> <span class="chip" style="background:#00A5DE;color:#fff">4號線 天藍</span> <span class="chip" style="background:#996CAC;color:#fff">5號線 紫</span> <span class="chip" style="background:#CD7C2F;color:#fff">6號線 啡</span> <span class="chip" style="background:#747F00;color:#fff">7號線 軍綠</span> <span class="chip" style="background:#E6186C;color:#fff">8號線 粉紅</span> <span class="chip" style="background:#BDB092">9號線 金</span> <span class="chip" style="background:#77C4A3">京義中央線</span> <span class="chip" style="background:#F5A800">機場鐵路 AREX</span>
+</p>
+<label>查地鐵路線</label>
+<input id="metroQ" placeholder="例如：弘大 → 明洞、江南 → 仁川機場">
+<button class="btn yellow" onclick="openMetro()">開 Kakao Metro 查 →</button>
+<button class="btn" onclick="openNaverMetro()">開 Naver 地鐵查 →</button>
+<div id="metroTip" style="margin-top:10px"></div>
+<p class="muted"><b>搭地鐵貼士：</b>① 用 T-money 拍卡，轉車 30 分鐘內唔使再畀錢 ② 避開 7:30-9:00 / 18:00-19:30 繁忙時間 ③ Kakao Metro 睇「邊個車卡」可以慳返 5 分鐘行路 ④ 去機場用 AREX 直達列車，唔好搭慢車</p>
+</div>
+<div class="card" id="food"><h2>🍽️ 訂枱 - CatchTable + Tableling</h2>
+<input id="foodQ" placeholder="餐廳名 / 地區，例如：燒肉 明洞">
+<button class="btn" onclick="openFood('catch')">開 CatchTable 搜 →</button>
+<button class="btn dark" onclick="openFood('table')">開 Tableling 搜 →</button>
+<div class="grid" style="margin-top:10px"><div class="box"><b>🔥 燒肉</b><p class="muted">CatchTable 拎位最快，熱門店要提前 1-2 星期</p></div><div class="box"><b>🍣 Omakase</b><p class="muted">Tableling 專攻高級餐廳 / Omakase</p></div><div class="box"><b>🍗 炸雞 / 宵夜</b><p class="muted">現場排隊 + 外賣都得</p></div><div class="box"><b>☕ Cafe</b><p class="muted">聖水 / 延南洞 打卡 Cafe</p></div></div></div>
+
+<div class="card" id="chat"><h2>💛 傾偈 - KakaoTalk 範本</h2><p class="muted">KakaoTalk 要登入先傾到，呢度俾你複製韓文範本直接 send 俾餐廳 / 酒店。</p><div id="chatTpl"></div>
+<a class="btn yellow" href="https://www.kakaocorp.com/page/service/service/KakaoTalk" target="_blank">開 KakaoTalk 官網</a></div>
+
+<div class="card" id="plan"><h2>📅 行程 - 簡易 Planner</h2>
+<input id="planInput" placeholder="例如：Day 1 10:00 明洞 換錢 + 午餐"><button class="btn" onclick="addPlan()">+ 加入行程</button><ul id="planList"></ul>
+<p class="muted"><b>出發 Checklist：</b> ☐ T-money ☐ eSIM / WiFi 蛋 ☐ 轉插頭 ☐ Papago + Naver Map 已下載 ☐ 護照 + 信用卡</p></div>
+
+<div class="card"><h2>⚠️ 要知</h2><p class="muted">呢個係整合 Hub，幫你一個網頁開晒所有官方服務。Kakao T 叫車、KakaoTalk 傾偈、CatchTable 真實訂位，始終要喺官方 App 登入先完成到，網頁做唔到代登入。</p></div>
+</div>
+<script>
+const P=[["你好","안녕하세요"],["唔該","감사합니다"],["幾錢？","얼마예요?"],["洗手間喺邊？","화장실 어디예요?"],["唔辣","안 맵게 해주세요"],["埋單","계산해 주세요"],["我想訂位","예약하고 싶어요"],["機場點去？","공항 어떻게 가요?"]];
+document.getElementById('phrases').innerHTML=P.map(p=>`<div class="phrase"><div><b>${p[0]}</b><br><span>${p[1]}</span></div><button class="btn dark" onclick="navigator.clipboard.writeText('${p[1]}');alert('已複製：${p[1]}')">複製</button></div>`).join('');
+const C=[["訂位範本","안녕하세요, 예약하고 싶어요. 2명, 내일 저녁 7시 가능할까요?"],["問酒店","안녕하세요, 공항에서 호텔까지 어떻게 가나요?"],["問辣度","안 맵게 해주세요, 감사합니다!"]];
+document.getElementById('chatTpl').innerHTML=C.map(c=>`<div class="phrase"><div><b>${c[0]}</b><br><span>${c[1]}</span></div><button class="btn yellow" onclick="navigator.clipboard.writeText(\`${c[1]}\`);alert('已複製')">複製</button></div>`).join('');
+function openMap(){let q=document.getElementById('mapQ').value||'明洞';window.open('https://map.naver.com/p/search/'+encodeURIComponent(q),'_blank')}
+function goPlace(p){window.open('https://map.naver.com/p/search/'+encodeURIComponent(p),'_blank')}
+function openPapago(){let t=document.getElementById('myText').value||'';window.open('https://papago.naver.com/?sk=zh-CN&tk=ko&st='+encodeURIComponent(t),'_blank')}
+function openFood(t){let q=document.getElementById('foodQ').value||'燒肉';if(t=='catch')window.open('https://www.catchtable.co.kr/','_blank');else window.open('https://www.tableling.com/','_blank')}
+function openMetro(){let q=document.getElementById('metroQ').value||'弘大 明洞';window.open('https://metro.kakao.com/','_blank');document.getElementById('metroTip').innerText='已開 Kakao Metro，喺入面打：'+q+'（網頁版要手動輸入起終點）'} function openNaverMetro(){let q=document.getElementById('metroQ').value||'弘大 明洞';window.open('https://map.naver.com/p/subway','_blank');document.getElementById('metroTip').innerText='已開 Naver 地鐵，喺入面打：'+q} function calc(){let f=document.getElementById('from').value,t=document.getElementById('to').value,m=document.getElementById('mode').value;let txt=m=='taxi'?'的士約 15,000-25,000 KRW · 約 35-55 分鐘 (視乎塞車)':m=='metro'?'地鐵約 1,450-2,500 KRW · 約 30-50 分鐘':'巴士約 1,500-3,000 KRW · 約 45-70 分鐘';document.getElementById('fare').innerText=f+' → '+t+'：'+txt+'（估算，實際以 Kakao T / Naver Map 為準）'}
+function addPlan(){let v=document.getElementById('planInput').value;if(!v)return;let li=document.createElement('li');li.textContent=v;document.getElementById('planList').appendChild(li);document.getElementById('planInput').value=''}
+</script></body></html>
