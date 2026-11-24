@@ -2,49 +2,87 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>other</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>other · 學習筆記合集</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background:#ffffff; color:#1f2328; display:flex; flex-direction:column; align-items:center; padding:32px 16px 48px; }
-  header { width:100%; max-width:980px; margin-bottom:20px; }
-  h1 { font-size:28px; font-weight:600; }
-  p.sub { color:#656d76; margin-top:6px; font-size:14px; }
-  .links { width:100%; max-width:980px; display:flex; flex-direction:column; gap:16px; margin:20px 0; }
-  .card { display:block; text-decoration:none; color:#1f2328; border:1px solid #d0d7de; border-radius:12px; padding:20px; background:#f6f8fa; }
-  .card:hover { border-color:#0969da; background:#eef6ff; }
-  .card b { font-size:18px; color:#0969da; display:block; margin-bottom:6px; word-break:break-all; }
-  .card span { font-size:14px; color:#656d76; }
-  main { width:100%; max-width:980px; background:#fff; border:1px solid #d0d7de; border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,0.06); }
-  img { display:block; width:100%; height:auto; }
-  footer { margin-top:16px; font-size:13px; color:#656d76; }
+  *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans JP","Noto Sans KR",sans-serif;background:#fffefb;color:#18181b}
+  header{position:sticky;top:0;background:rgba(255,254,251,.9);backdrop-filter:blur(12px);border-bottom:1px solid #ede8df}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  .top{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-size:14px}
+  .top a{color:#6b6e76;text-decoration:none}.top a:hover{color:#18181b}
+  .hero{border:1px solid #ede8df;border-radius:24px;background:#fff;padding:28px;margin:20px 0;box-shadow:0 10px 40px rgba(27,25,22,.06)}
+  .hero h1{font-family:Georgia,serif;font-size:64px;line-height:.9;margin:8px 0;letter-spacing:-2px}
+  .hero p{color:#6b6e76;margin:6px 0 0}
+  .badge{display:inline-block;background:#18181b;color:#fff;border-radius:999px;padding:5px 12px;font-size:11px}
+  .badge.new{background:#fdf0d5;color:#b08c4f}
+  section{margin:28px 0}
+  h2{font-size:22px;margin:0 0 4px} .sub{color:#a1a1aa;font-size:12px;margin-bottom:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+  a.card{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid #ede8df;border-radius:16px;background:#fff;padding:16px;text-decoration:none;color:#18181b;box-shadow:0 2px 8px rgba(27,25,22,.04)}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(27,25,22,.1)}
+  a.card b{font-family:monospace;font-size:13px;word-break:break-all}
+  a.card small{display:block;color:#a1a1aa;font-size:11px;margin-top:4px}
+  .tag{font-size:10px;background:#eef5fc;color:#5a8ab5;border-radius:999px;padding:3px 8px;white-space:nowrap}
+  .tag.beige{background:#fffbf0;color:#b08c4f}.tag.pink{background:#fff1f3;color:#be5a7a}.tag.green{background:#eef7ee;color:#4a7a4a}
+  .go{width:28px;height:28px;flex-shrink:0;border:1px solid #ede8df;border-radius:50%;display:grid;place-items:center}
+  .note{background:#fffbf0;border:1px dashed #e4dfd6;border-radius:16px;padding:16px;font-size:13px;color:#6b6e76;line-height:1.7}
+  .note b{color:#18181b}
+  footer{border-top:1px solid #ede8df;padding:18px 0;font-size:11px;color:#a1a1aa;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  input{width:100%;padding:13px 16px;border:1px solid #e4dfd6;border-radius:999px;font-size:15px;outline:none;background:#fff}
+  input:focus{border-color:#5a8ab5;box-shadow:0 0 0 4px #eef5fc}
+  @media(max-width:600px){.hero h1{font-size:48px}}
 </style>
 </head>
 <body>
-<header>
-  <h1>other</h1>
-  <p class="sub">Public repository — main branch · 1 Branch · 0 Tags · 2 Commits</p>
-</header>
+<header><div class="wrap top"><span><b>kong123485-beep</b> <span style="color:#a1a1aa">/ other</span></span><a href="https://github.com/kong123485-beep/other" target="_blank" rel="noopener">GitHub ↗</a></div></header>
+<main class="wrap">
+  <div class="hero">
+    <span class="badge">STUDY ARCHIVE</span>
+    <h1>other</h1>
+    <p>日本・韓國・談判 — 學習筆記合集<br><span style="font-size:14px">Japan · Korea · Negotiations</span></p>
+    <p style="margin-top:16px"><input id="q" placeholder="依檔名搜尋 — 例如：N5、Grammar、Korea、Negotiations…" oninput="filter()"></p>
+  </div>
 
-<div class="links">
-  <a class="card" href="Japan-Korea-Daily-Press.html">
-    <b>Japan-Korea-Daily-Press.html →</b>
-    <span>日本・韓國每日新聞 / Japan-Korea Daily Press</span>
-  </a>
-  <a class="card" href="Korea-Hub.html">
-    <b>Korea-Hub.html →</b>
-    <span>韓國中心 / Korea Hub</span>
-  </a>
-  <a class="card" href="Jrenotes.html">
-    <b>Jrenotes.html →</b>
-    <span>JR 筆記 / Jre Notes</span>
-  </a>
-  <a class="card" href="Stages-Of-Negotiations (1).html">
-    <b>Stages-Of-Negotiations (1).html →</b>
-    <span>談判階段 / Stages Of Negotiations</span>
-  </a>
-</div>
+  <section>
+    <h2>日本・韓國每日新聞 / 中心</h2><div class="sub">Japan &amp; Korea · Daily Press / Hub</div>
+    <div class="grid">
+      <a class="card" href="./Japan-Korea-Daily-Press.html"><span><b>Japan-Korea-Daily-Press.html</b><small>日本・韓國每日新聞 / Japan-Korea Daily Press</small></span><span><span class="tag">Daily</span> <span class="go">↗</span></span></a>
+      <a class="card" href="./Korea-Hub.html"><span><b>Korea-Hub.html</b><small>韓國中心 / Korea Hub</small></span><span><span class="tag">Hub</span> <span class="go">↗</span></span></a>
+    </div>
+  </section>
 
-<footer>Files: Japan-Korea-Daily-Press.html · Korea-Hub.html · Jrenotes.html · Stages-Of-Negotiations (1).html · README.md — Added by kong123485-beep</footer>
+  <section>
+    <h2>日語文法・JLPT</h2><div class="sub">Japanese Grammar · 日本語文法</div>
+    <div class="grid">
+      <a class="card" href="./N5-N4-Grammar-A4.html"><span><b>N5-N4-Grammar-A4.html</b><small>N5–N4 文法 · A4</small></span><span><span class="tag beige">NEW · N5–N4</span> <span class="go">↗</span></span></a>
+      <a class="card" href="./N3-N2-N1-Grammar-A4.html"><span><b>N3-N2-N1-Grammar-A4.html</b><small>N3–N2–N1 文法 · A4</small></span><span><span class="tag beige">NEW · N3–N1</span> <span class="go">↗</span></span></a>
+      <a class="card" href="./JRE-AO-EO-A4-V2.html"><span><b>JRE-AO-EO-A4-V2.html</b><small>JRE AO / EO · A4 V2</small></span><span><span class="tag beige">NEW</span> <span class="go">↗</span></span></a>
+      <a class="card" href="./CRE-AT-35-A4-APII-Large-V5.html"><span><b>CRE-AT-35-A4-APII-Large-V5.html</b><small>CRE-AT-35 · A4 APII Large V5</small></span><span><span class="tag beige">NEW</span> <span class="go">↗</span></span></a>
+      <a class="card" href="./Jrenotes.html"><span><b>Jrenotes.html</b><small>JR 筆記 / Jre Notes</small></span><span><span class="tag pink">Notes</span> <span class="go">↗</span></span></a>
+    </div>
+  </section>
+
+  <section>
+    <h2>談判</h2><div class="sub">Negotiations · 交渉</div>
+    <div class="grid">
+      <a class="card" href="./Stages-Of-Negotiations%20(1).html"><span><b>Stages-Of-Negotiations (1).html</b><small>談判階段 / Stages Of Negotiations</small></span><span><span class="tag green">Negotiation</span> <span class="go">↗</span></span></a>
+    </div>
+  </section>
+
+  <div class="note"><b>呢版跟返你最新 screenshot 嘅 repo 嚟寫（共 9 個內容 file）：</b><br>
+  ✅ <code>Japan-Korea-Daily-Press.html</code>、<code>Korea-Hub.html</code>、<code>N5-N4-Grammar-A4.html</code>、<code>N3-N2-N1-Grammar-A4.html</code>、<code>JRE-AO-EO-A4-V2.html</code>、<code>CRE-AT-35-A4-APII-Large-V5.html</code>、<code>Jrenotes.html</code>、<code>Stages-Of-Negotiations (1).html</code><br><br>
+  <b>兩點要留意：</b><br>
+  1. <code>Stages-Of-Negotiations (1).html</code> 個檔名有空格同括號，index 入面要寫做 <code>Stages-Of-Negotiations%20(1).html</code> 先至入到，我已經幫你轉咗，唔好改返做有空格嗰個。<br>
+  2. GitHub Pages 分大小寫，上面啲 link 已經跟返 repo 實際檔名，唔好手動改大小寫。</div>
+</main>
+<footer class="wrap"><span>kong123485-beep / other</span><span>© 2026 · 9 files + README.md</span></footer>
+<script>
+function filter(){
+  var q=document.getElementById('q').value.toLowerCase();
+  document.querySelectorAll('a.card').forEach(function(c){
+    c.style.display = c.textContent.toLowerCase().includes(q) ? 'flex' : 'none';
+  });
+}
+</script>
 </body>
 </html>
