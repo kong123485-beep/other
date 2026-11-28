@@ -44,7 +44,7 @@
   a.card b{font-family:monospace;font-size:13px;word-break:break-all}
   a.card small{display:block;color:#a1a1aa;font-size:11px;margin-top:4px}
   .tag{font-size:10px;background:#eef5fc;color:#5a8ab5;border-radius:999px;padding:3px 8px;white-space:nowrap}
-  .tag.beige{background:#fffbf0;color:#b08c4f}.tag.pink{background:#fff1f3;color:#be5a7a}.tag.green{background:#eef7ee;color:#4a7a4a}
+  .tag.beige{background:#fffbf0;color:#b08c4f}.tag.pink{background:#fff1f3;color:#be5a7a}.tag.green{background:#eef7ee;color:#4a7a4a}.tag.red{background:#fff1f1;color:#b05a5a}
   .go{width:28px;height:28px;flex-shrink:0;border:1px solid #ede8df;border-radius:50%;display:grid;place-items:center}
   .note{background:#fffbf0;border:1px dashed #e4dfd6;border-radius:16px;padding:16px;font-size:13px;color:#6b6e76;line-height:1.7}
   .note b{color:#18181b}
@@ -60,8 +60,8 @@
   <div class="hero">
     <span class="badge">STUDY ARCHIVE</span>
     <h1>other</h1>
-    <p>日本・韓國・談判 — 學習筆記合集<br><span style="font-size:14px">Japan · Korea · Negotiations</span></p>
-    <p style="margin-top:16px"><input id="q" placeholder="依檔名搜尋 — 例如：N5、Grammar、Korea、Negotiations…" oninput="filter()"></p>
+    <p>日本・韓國・談判・中國四大名著 — 學習筆記合集<br><span style="font-size:14px">Japan · Korea · Negotiations · Chinese Classics</span></p>
+    <p style="margin-top:16px"><input id="q" placeholder="依檔名搜尋 — 例如：N5、Grammar、Korea、Negotiations、四大名著…" oninput="filter()"></p>
   </div>
 
   <section>
@@ -85,19 +85,26 @@
   </section>
 
   <section>
+    <h2>中國四大名著</h2><div class="sub">Chinese Classics · 四大名著</div>
+    <div class="grid">
+      <a class="card" href="./four_x5f_classics_x5f_notes.html"><span><b>four_x5f_classics_x5f_notes.html</b><small>中國四大名著重點 / Four Classics Notes</small></span><span><span class="tag red">NEW · 四大名著</span> <span class="go">↗</span></span></a>
+    </div>
+  </section>
+
+  <section>
     <h2>談判</h2><div class="sub">Negotiations · 交渉</div>
     <div class="grid">
       <a class="card" href="./Stages-Of-Negotiations%20(1).html"><span><b>Stages-Of-Negotiations (1).html</b><small>談判階段 / Stages Of Negotiations</small></span><span><span class="tag green">Negotiation</span> <span class="go">↗</span></span></a>
     </div>
   </section>
 
-  <div class="note"><b>呢版跟返你最新 screenshot 嘅 repo 嚟寫（共 10 個內容 file）：</b><br>
-  ✅ <code>Japan-Korea-Daily-Press.html</code>、<code>Korea-Hub.html</code>、<code>N5-N4-Grammar-A4.html</code>、<code>N3-N2-N1-Grammar-A4.html</code>、<code>japanese_study_notes.html</code>、<code>JRE-AO-EO-A4-V2.html</code>、<code>CRE-AT-35-A4-APII-Large-V5.html</code>、<code>Jrenotes.html</code>、<code>Stages-Of-Negotiations (1).html</code><br><br>
+  <div class="note"><b>呢版跟返你最新 screenshot 嘅 repo 嚟寫（共 11 個內容 file）：</b><br>
+  ✅ <code>Japan-Korea-Daily-Press.html</code>、<code>Korea-Hub.html</code>、<code>N5-N4-Grammar-A4.html</code>、<code>N3-N2-N1-Grammar-A4.html</code>、<code>japanese_study_notes.html</code>、<code>JRE-AO-EO-A4-V2.html</code>、<code>CRE-AT-35-A4-APII-Large-V5.html</code>、<code>Jrenotes.html</code>、<code>four_x5f_classics_x5f_notes.html</code>、<code>Stages-Of-Negotiations (1).html</code><br><br>
   <b>兩點要留意：</b><br>
   1. <code>Stages-Of-Negotiations (1).html</code> 個檔名有空格同括號，index 入面要寫做 <code>Stages-Of-Negotiations%20(1).html</code> 先至入到，我已經幫你轉咗，唔好改返做有空格嗰個。<br>
-  2. GitHub Pages 分大小寫，上面啲 link 已經跟返 repo 實際檔名，唔好手動改大小寫。新增嘅 <code>japanese_study_notes.html</code> 全部細楷，link 都係跟返細楷。</div>
+  2. GitHub Pages 分大小寫，上面啲 link 已經跟返 repo 實際檔名，唔好手動改大小寫。新增嘅 <code>japanese_study_notes.html</code> 全部細楷，link 都係跟返細楷。新增嘅 <code>four_x5f_classics_x5f_notes.html</code> 要照抄全名，包括 <code>_x5f_</code>，唔好改做底線。</div>
 </main>
-<footer class="wrap"><span>kong123485-beep / other</span><span>© 2026 · 10 files + README.md</span></footer>
+<footer class="wrap"><span>kong123485-beep / other</span><span>© 2026 · 11 files + README.md</span></footer>
 <script>
 function filter(){
   var q=document.getElementById('q').value.toLowerCase();
